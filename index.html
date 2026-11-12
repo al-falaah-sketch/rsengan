@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naruto Jutsu AR - Rasengan & Chidori</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- MediaPipe Computer Vision AI Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Hidden webcam element -->
+    <video id="webcam" playsinline style="display: none;"></video>
+    
+    <!-- AR Output Canvas -->
+    <canvas id="output-canvas"></canvas>
+    <!-- Top Ninja HUD -->
+    <header class="hud-header">
+      <div class="hud-logo">
+        <span class="kanji">忍</span>
+        <div>
+          <h1>JUTSU CAM</h1>
+          <p>Chakra Augmented Reality</p>
+        </div>
+      </div>
+      <div class="hud-controls">
+        <button id="btn-rasengan" class="btn active">🌀 Rasengan (1)</button>
+        <button id="btn-chidori" class="btn">⚡ Chidori (2)</button>
+        <button id="btn-auto" class="btn">🖐️ Auto-Detect (3)</button>
+        <button id="btn-audio" class="btn icon-btn" title="Toggle Audio">🔇 Sound (M)</button>
+      </div>
+    </header>
+    <!-- Loading / Status Badge -->
+    <div id="status-badge" class="status-badge">
+      <div class="pulse-dot"></div>
+      <span id="status-text">Loading Hand Tracking AI...</span>
+    </div>
+    <!-- Active Jutsu Banner -->
+    <div id="jutsu-banner" class="jutsu-banner rasengan-mode">
+      <h2 id="banner-title">RASENGAN 螺旋丸</h2>
+      <p id="banner-desc">Open your palm to compress rotating chakra!</p>
+    </div>
+    <!-- Bottom Instructions -->
+    <footer class="hud-footer">
+      <p>💡 <strong>Tip:</strong> Hold your hand in front of the camera. Push closer to expand your jutsu!</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
